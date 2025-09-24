@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarFinder NG - Nigerian Car Marketplace</title>
+    <meta name="description" content="Find and sell cars in Nigeria. Connect directly with buyers and sellers.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#fefce8',
+                            100: '#fef9c3',
+                            200: '#fef08a',
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                            800: '#854d0e',
+                            900: '#713f12',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        .btn {
+            @apply px-4 py-2 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+        }
+        .btn-primary {
+            @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+        }
+        .btn-outline {
+            @apply border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-primary-500;
+        }
+        .input {
+            @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+        }
+        .card {
+            @apply bg-white rounded-lg shadow-md overflow-hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">CF</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">CarFinder NG</span>
+                    </div>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-primary-600">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600">Search</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600">Sell Car</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600">Messages</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="btn btn-outline">Login</button>
+                    <button class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Find Your Perfect Car in Nigeria
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-primary-100">
+                Connect directly with car sellers and buyers across Nigeria
+            </p>
+            
+            <!-- Search Form -->
+            <div class="max-w-4xl mx-auto bg-white rounded-lg p-6 shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search by brand, model..." class="input text-gray-900">
+                        <i data-lucide="search" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5"></i>
+                    </div>
+                    <select class="input text-gray-900">
+                        <option value="">All States</option>
+                        <option value="Lagos">Lagos</option>
+                        <option value="Abuja">Abuja (FCT)</option>
+                        <option value="Kano">Kano</option>
+                        <option value="Rivers">Rivers</option>
+                        <option value="Oyo">Oyo</option>
+                    </select>
+                    <button class="btn btn-primary w-full">
+                        <i data-lucide="search" class="inline h-4 w-4 mr-2"></i>
+                        Search Cars
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-primary-600 mb-2">10,000+</div>
+                    <div class="text-gray-600">Cars Listed</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-primary-600 mb-2">5,000+</div>
+                    <div class="text-gray-600">Happy Customers</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-primary-600 mb-2">36</div>
+                    <div class="text-gray-600">States Covered</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-primary-600 mb-2">24/7</div>
+                    <div class="text-gray-600">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Cars</h2>
+                <p class="text-gray-600">Discover the best car deals in Nigeria</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Car Card 1 -->
+                <div class="card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x250/0ea5e9/ffffff?text=2020+Toyota+Camry" alt="2020 Toyota Camry" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-primary-600 text-white px-2 py-1 rounded text-sm">Used</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">2020 Toyota Camry LE</h3>
+                        <div class="text-2xl font-bold text-primary-600 mb-4">₦12,500,000</div>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                <span>Ikeja, Lagos</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="calendar" class="h-4 w-4"></i>
+                                <span>Posted 2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <span class="text-xs font-semibold">AM</span>
+                                </div>
+                                <span class="text-sm text-gray-600">Ahmed Musa</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="p-2 text-gray-400 hover:text-primary-600">
+                                    <i data-lucide="phone" class="h-4 w-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-400 hover:text-primary-600">
+                                    <i data-lucide="message-circle" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 btn btn-primary">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Car Card 2 -->
+                <div class="card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x250/0ea5e9/ffffff?text=2019+Honda+Accord" alt="2019 Honda Accord" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-primary-600 text-white px-2 py-1 rounded text-sm">Used</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">2019 Honda Accord Sport</h3>
+                        <div class="text-2xl font-bold text-primary-600 mb-4">₦11,800,000</div>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                <span>Wuse 2, Abuja</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="calendar" class="h-4 w-4"></i>
+                                <span>Posted 3 days ago</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <span class="text-xs font-semibold">FI</span>
+                                </div>
+                                <span class="text-sm text-gray-600">Fatima Ibrahim</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="p-2 text-gray-400 hover:text-primary-600">
+                                    <i data-lucide="phone" class="h-4 w-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-400 hover:text-primary-600">
+                                    <i data-lucide="message-circle" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 btn btn-primary">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Car Card 3 -->
+                <div class="card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x250/0ea5e9/ffffff?text=2021+Mercedes+C-Class" alt="2021 Mercedes C-Class" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4 bg-primary-600 text-white px-2 py-1 rounded text-sm">Used</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">2021 Mercedes-Benz C-Class</h3>
+                        <div class="text-2xl font-bold text-primary-600 mb-4">₦25,000,000</div>
+                        <div class="space-y-2 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                <span>GRA Phase 2, Port Harcourt</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="calendar" class="h-4 w-4"></i>
+                                <span>Posted 4 days ago</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <span class="text-xs font-semibold">CO</span>
+                                </div>
+                                <span class="text-sm text-gray-600">Chidi Okafor</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="p-2 text-gray-400 hover:text-primary-600">
+                                    <i data-lucide="phone" class="h-4 w-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-400 hover:text-primary-600">
+                                    <i data-lucide="message-circle" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-gray-600">Simple steps to buy or sell your car</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- For Buyers -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-center">For Buyers</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-semibold">1</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Search for Cars</h4>
+                                <p class="text-gray-600">Browse through thousands of cars or use our advanced search filters</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-semibold">2</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Contact Seller</h4>
+                                <p class="text-gray-600">Call or message the seller directly through our platform</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-semibold">3</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Inspect & Buy</h4>
+                                <p class="text-gray-600">Meet the seller, inspect the car, and complete your purchase</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- For Sellers -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-center">For Sellers</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-secondary-600 text-white rounded-full flex items-center justify-center font-semibold">1</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Create Account</h4>
+                                <p class="text-gray-600">Sign up and verify your account to start selling</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-secondary-600 text-white rounded-full flex items-center justify-center font-semibold">2</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">List Your Car</h4>
+                                <p class="text-gray-600">Upload photos, add details, and set your price</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-secondary-600 text-white rounded-full flex items-center justify-center font-semibold">3</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Connect with Buyers</h4>
+                                <p class="text-gray-600">Receive messages and calls from interested buyers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">CF</span>
+                        </div>
+                        <span class="text-xl font-bold">CarFinder NG</span>
+                    </div>
+                    <p class="text-gray-400">Nigeria's premier car marketplace connecting buyers and sellers across the country.</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Search Cars</a></li>
+                        <li><a href="#" class="hover:text-white">Sell Your Car</a></li>
+                        <li><a href="#" class="hover:text-white">Car Financing</a></li>
+                        <li><a href="#" class="hover:text-white">Insurance</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Safety Tips</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Contact Info</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="phone" class="h-4 w-4"></i>
+                            <span>+234 800 CARFINDER</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span>support@carfinderng.com</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="map-pin" class="h-4 w-4"></i>
+                            <span>Lagos, Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 CarFinder NG. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Simple interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.textContent.includes('Search Cars')) {
+                        alert('Search functionality would be implemented here!');
+                    } else if (this.textContent.includes('View Details')) {
+                        alert('Car details page would open here!');
+                    } else if (this.textContent.includes('Login')) {
+                        alert('Login modal would open here!');
+                    } else if (this.textContent.includes('Register')) {
+                        alert('Registration modal would open here!');
+                    }
+                });
+            });
+            
+            // Add hover effects for car cards
+            const carCards = document.querySelectorAll('.card');
+            carCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
